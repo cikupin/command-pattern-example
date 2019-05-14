@@ -29,12 +29,12 @@ func TestMultiply(t *testing.T) {
 	os.Stdin = tmpfile
 
 	// Test operation
-	sum := new(Multiply)
-	sum.GetInput()
-	sum.Execute()
-	sum.PrintOutput()
+	m := new(Multiply)
+	m.GetInput()
+	m.Execute()
+	m.PrintOutput()
 
-	assert.Equal(t, int64(20), sum.result)
+	assert.Equal(t, int64(20), m.result)
 
 	if err := tmpfile.Close(); err != nil {
 		log.Fatal(err)
