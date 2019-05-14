@@ -90,12 +90,12 @@ func TestFibo_Input5(t *testing.T) {
 	f.Execute()
 	f.PrintOutput()
 
-	result := map[int64]int64{
-		int64(0): int64(0),
-		int64(1): int64(1),
-		int64(2): int64(1),
-		int64(3): int64(2),
-		int64(4): int64(3),
+	result := map[int]int{
+		0: 0,
+		1: 1,
+		2: 1,
+		3: 2,
+		4: 3,
 	}
 	assert.Equal(t, result, f.memoize)
 
@@ -129,20 +129,20 @@ func TestFibo_Input13(t *testing.T) {
 	f.Execute()
 	f.PrintOutput()
 
-	result := map[int64]int64{
-		int64(0):  int64(0),
-		int64(1):  int64(1),
-		int64(2):  int64(1),
-		int64(3):  int64(2),
-		int64(4):  int64(3),
-		int64(5):  int64(5),
-		int64(6):  int64(8),
-		int64(7):  int64(13),
-		int64(8):  int64(21),
-		int64(9):  int64(34),
-		int64(10): int64(55),
-		int64(11): int64(89),
-		int64(12): int64(144),
+	result := map[int]int{
+		0:  0,
+		1:  1,
+		2:  1,
+		3:  2,
+		4:  3,
+		5:  5,
+		6:  8,
+		7:  13,
+		8:  21,
+		9:  34,
+		10: 55,
+		11: 89,
+		12: 144,
 	}
 	assert.Equal(t, result, f.memoize)
 

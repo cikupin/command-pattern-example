@@ -6,7 +6,7 @@ import (
 
 // Sum defines Sum operation struct
 type Sum struct {
-	a, b, result int64
+	a, b, result int
 }
 
 // GetInput will get input for Sum operation

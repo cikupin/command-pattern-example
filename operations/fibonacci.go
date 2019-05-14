@@ -8,8 +8,8 @@ import (
 
 // Fibo defines struct for Fibonacci operation
 type Fibo struct {
-	memoize map[int64]int64
-	input   int64
+	memoize map[int]int
+	input   int
 }
 
 // GetInput will get input for fibonacci operation
@@ -26,20 +26,20 @@ func (f *Fibo) GetInput() error {
 		return errors.New("input cannot be less than 1")
 	}
 
-	f.memoize = map[int64]int64{}
+	f.memoize = map[int]int{}
 	return nil
 }
 
 // Execute will execute operation for fibonacci
 func (f *Fibo) Execute() error {
-	for i := int64(0); i < f.input; i++ {
+	for i := 0; i < f.input; i++ {
 		f.getFibo(i)
 	}
 	return nil
 }
 
 // getFibo is a recursion function to get fibonacci number
-func (f *Fibo) getFibo(n int64) int64 {
+func (f *Fibo) getFibo(n int) int {
 	if n == 0 {
 		f.memoize[0] = 0
 		return f.memoize[0]
@@ -60,7 +60,7 @@ func (f *Fibo) getFibo(n int64) int64 {
 // PrintOutput will print result in console
 func (f *Fibo) PrintOutput() error {
 	fmt.Print("Output: ")
-	for i := int64(0); i < f.input; i++ {
+	for i := 0; i < f.input; i++ {
 		fmt.Printf("%d ", f.memoize[i])
 	}
 	fmt.Print("\n\n")

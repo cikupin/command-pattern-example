@@ -34,7 +34,7 @@ func TestMultiply(t *testing.T) {
 	m.Execute()
 	m.PrintOutput()
 
-	assert.Equal(t, int64(20), m.result)
+	assert.Equal(t, 20, m.result)
 
 	if err := tmpfile.Close(); err != nil {
 		log.Fatal(err)

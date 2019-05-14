@@ -7,7 +7,7 @@ import (
 
 // Multiply defines number multiplication operation struct
 type Multiply struct {
-	a, b, result int64
+	a, b, result int
 }
 
 // GetInput will get input for multiplication operation

@@ -34,7 +34,7 @@ func TestSum(t *testing.T) {
 	sum.Execute()
 	sum.PrintOutput()
 
-	assert.Equal(t, int64(9), sum.result)
+	assert.Equal(t, 9, sum.result)
 
 	if err := tmpfile.Close(); err != nil {
 		log.Fatal(err)
