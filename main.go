@@ -8,6 +8,7 @@ import (
 type IEvent interface {
 	GetInput() error
 	Execute() error
+	PrintOutput() error
 }
 
 // EventStore defines storage to store assigned events
@@ -18,8 +19,16 @@ type EventStore struct {
 // InitAndExecute will initialize event and execute event command
 func (e *EventStore) InitAndExecute(event IEvent) {
 	e.events = append(e.events, event)
-	event.GetInput()
-	event.Execute()
+	err := event.GetInput()
+	if err != nil {
+		panic(err)
+	}
+
+	err = event.Execute()
+	if err != nil {
+		panic(err)
+	}
+	event.PrintOutput()
 }
 
 func main() {
