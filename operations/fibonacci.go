@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"os"
+	"strings"
 )
 
 // Fibo defines struct for Fibonacci operation
@@ -59,10 +60,12 @@ func (f *Fibo) getFibo(n int) int {
 
 // PrintOutput will print result in console
 func (f *Fibo) PrintOutput() error {
-	fmt.Print("Output: ")
-	for i := 0; i < f.input; i++ {
-		fmt.Printf("%d ", f.memoize[i])
+	ls := make([]int, 0, len(f.memoize))
+	for _, val := range f.memoize {
+		ls = append(ls, val)
 	}
-	fmt.Print("\n\n")
+
+	output := strings.Trim(strings.Join(strings.Fields(fmt.Sprint(ls)), ", "), "[]")
+	fmt.Printf("Output: %s\n\n", output)
 	return nil
 }

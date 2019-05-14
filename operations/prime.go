@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"math"
 	"os"
+	"strings"
 )
 
 // Prime defines struct for prime number operation
@@ -61,10 +62,7 @@ func (p *Prime) checkPrime(n int) bool {
 
 // PrintOutput will print result in console
 func (p *Prime) PrintOutput() error {
-	fmt.Print("Output: ")
-	for i := range p.result {
-		fmt.Printf("%d ", p.result[i])
-	}
-	fmt.Print("\n\n")
+	output := strings.Trim(strings.Join(strings.Fields(fmt.Sprint(p.result)), ", "), "[]")
+	fmt.Printf("Output: %s\n\n", output)
 	return nil
 }
