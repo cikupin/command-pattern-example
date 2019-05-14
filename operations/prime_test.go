@@ -9,7 +9,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestFibo_WrongInput(t *testing.T) {
+func TestPrime_WrongInput(t *testing.T) {
 	content := []byte("qwe")
 	tmpfile, err := ioutil.TempFile("", "example")
 	if err != nil {
@@ -29,15 +29,15 @@ func TestFibo_WrongInput(t *testing.T) {
 	os.Stdin = tmpfile
 
 	// Test operation
-	f := new(Fibo)
-	f.GetInput()
+	sum := new(Prime)
+	sum.GetInput()
 
 	if err := tmpfile.Close(); err != nil {
 		log.Fatal(err)
 	}
 }
 
-func TestFibo_InputLessThan1(t *testing.T) {
+func TestPrime_InputLessThan1(t *testing.T) {
 	content := []byte("0")
 	tmpfile, err := ioutil.TempFile("", "example")
 	if err != nil {
@@ -57,15 +57,15 @@ func TestFibo_InputLessThan1(t *testing.T) {
 	os.Stdin = tmpfile
 
 	// Test operation
-	f := new(Fibo)
-	f.GetInput()
+	sum := new(Prime)
+	sum.GetInput()
 
 	if err := tmpfile.Close(); err != nil {
 		log.Fatal(err)
 	}
 }
 
-func TestFibo_Input5(t *testing.T) {
+func TestPrime_Input5(t *testing.T) {
 	content := []byte("5")
 	tmpfile, err := ioutil.TempFile("", "example")
 	if err != nil {
@@ -85,26 +85,20 @@ func TestFibo_Input5(t *testing.T) {
 	os.Stdin = tmpfile
 
 	// Test operation
-	f := new(Fibo)
-	f.GetInput()
-	f.Execute()
-	f.PrintOutput()
+	p := new(Prime)
+	p.GetInput()
+	p.Execute()
+	p.PrintOutput()
 
-	result := map[int64]int64{
-		int64(0): int64(0),
-		int64(1): int64(1),
-		int64(2): int64(1),
-		int64(3): int64(2),
-		int64(4): int64(3),
-	}
-	assert.Equal(t, result, f.memoize)
+	result := []int{2, 3, 5, 7, 9}
+	assert.Equal(t, result, p.result)
 
 	if err := tmpfile.Close(); err != nil {
 		log.Fatal(err)
 	}
 }
 
-func TestFibo_Input13(t *testing.T) {
+func TestPrime_Input13(t *testing.T) {
 	content := []byte("13")
 	tmpfile, err := ioutil.TempFile("", "example")
 	if err != nil {
@@ -124,27 +118,13 @@ func TestFibo_Input13(t *testing.T) {
 	os.Stdin = tmpfile
 
 	// Test operation
-	f := new(Fibo)
-	f.GetInput()
-	f.Execute()
-	f.PrintOutput()
+	p := new(Prime)
+	p.GetInput()
+	p.Execute()
+	p.PrintOutput()
 
-	result := map[int64]int64{
-		int64(0):  int64(0),
-		int64(1):  int64(1),
-		int64(2):  int64(1),
-		int64(3):  int64(2),
-		int64(4):  int64(3),
-		int64(5):  int64(5),
-		int64(6):  int64(8),
-		int64(7):  int64(13),
-		int64(8):  int64(21),
-		int64(9):  int64(34),
-		int64(10): int64(55),
-		int64(11): int64(89),
-		int64(12): int64(144),
-	}
-	assert.Equal(t, result, f.memoize)
+	result := []int{2, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25}
+	assert.Equal(t, result, p.result)
 
 	if err := tmpfile.Close(); err != nil {
 		log.Fatal(err)

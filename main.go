@@ -34,10 +34,12 @@ func (e *EventStore) InitAndExecute(event IEvent) {
 func main() {
 	sumOperation := new(operations.Sum)
 	multiplicationOperation := new(operations.Multiply)
+	primeOperation := new(operations.Prime)
 	fibonacciOperations := new(operations.Fibo)
 
 	eventStorage := new(EventStore)
 	eventStorage.InitAndExecute(sumOperation)
 	eventStorage.InitAndExecute(multiplicationOperation)
+	eventStorage.InitAndExecute(primeOperation)
 	eventStorage.InitAndExecute(fibonacciOperations)
 }
